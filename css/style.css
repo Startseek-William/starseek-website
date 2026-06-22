@@ -250,8 +250,13 @@ img {
   text-decoration: none;
 }
 .nav-logo img {
-  height: 36px;
+  height: 44px;
   width: auto;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.15));
+}
+/* Hide text if logo already contains company name */
+.nav-logo img + span {
+  display: none;
 }
 .nav-logo span {
   background: linear-gradient(135deg, var(--color-text-primary), var(--color-primary-light));
