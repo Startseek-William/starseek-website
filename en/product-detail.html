@@ -42,7 +42,7 @@
       <div class="breadcrumb">
         <a href="./">Home</a> <span>/</span>
         <a href="products.html">Products</a> <span>/</span>
-        <span id="bcCat">Anti-Jamming Antenna</span> <span>/</span>
+        <a href="products.html?category=antenna" id="bcCat">Anti-Jamming Antenna</a> <span>/</span>
         <span id="bcName" style="color:var(--color-text-primary);">Product Detail</span>
       </div>
 
@@ -124,7 +124,7 @@
       document.getElementById('detailName').textContent = d.name;
       document.getElementById('detailSubtitle').textContent = d.subtitle;
       document.getElementById('bcName').textContent = d.name;
-      document.getElementById('bcCat').textContent = 'Anti-Jamming Antenna';
+      // bcCat already linked in HTML
 
       document.getElementById('detailOverview').textContent = d.overview;
 

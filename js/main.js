@@ -172,23 +172,47 @@
 
     if (!tabs.length || !cards.length) return;
 
+    function applyFilter(filter) {
+      tabs.forEach(t => t.classList.remove('active'));
+      const activeTab = document.querySelector(`.category-tab[data-filter="${filter}"]`);
+      if (activeTab) activeTab.classList.add('active');
+
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = '';
+          card.parentElement.style.display = ''; // for <a> wrapper
+          setTimeout(() => card.classList.add('animate-in'), 10);
+        } else {
+          card.style.display = 'none';
+          card.parentElement.style.display = 'none'; // for <a> wrapper
+          card.classList.remove('animate-in');
+        }
+      });
+
+      // Update URL without reload
+      if (history.replaceState) {
+        const url = new URL(window.location);
+        if (filter === 'all') {
+          url.searchParams.delete('category');
+        } else {
+          url.searchParams.set('category', filter);
+        }
+        history.replaceState(null, '', url);
+      }
+    }
+
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const filter = tab.dataset.filter;
-
-        cards.forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = '';
-            setTimeout(() => card.classList.add('animate-in'), 10);
-          } else {
-            card.style.display = 'none';
-            card.classList.remove('animate-in');
-          }
-        });
+        applyFilter(tab.dataset.filter);
       });
     });
+
+    // Check URL parameter on load
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('category');
+    if (catParam && document.querySelector(`.category-tab[data-filter="${catParam}"]`)) {
+      applyFilter(catParam);
+    }
   }
 
   // --- Contact Form ---

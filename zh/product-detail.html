@@ -42,7 +42,7 @@
       <div class="breadcrumb">
         <a href="./">首页</a> <span>/</span>
         <a href="products.html">产品中心</a> <span>/</span>
-        <span id="bcCat">抗干扰天线</span> <span>/</span>
+        <a href="products.html?category=antenna" id="bcCat">抗干扰天线</a> <span>/</span>
         <span id="bcName" style="color:var(--color-text-primary);">产品详情</span>
       </div>
 
@@ -127,7 +127,7 @@
       document.getElementById('detailName').textContent = d.name;
       document.getElementById('detailSubtitle').textContent = d.subtitle;
       document.getElementById('bcName').textContent = d.name;
-      document.getElementById('bcCat').textContent = '抗干扰天线';
+      // bcCat already linked in HTML
 
       // Overview
       document.getElementById('detailOverview').textContent = d.overview;
