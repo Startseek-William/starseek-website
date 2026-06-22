@@ -512,6 +512,17 @@ img {
   border-radius: 100px;
 }
 
+/* --- Product Card Link --- */
+.product-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.product-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* --- Product Card --- */
 .product-card {
   background: var(--color-bg-card);
