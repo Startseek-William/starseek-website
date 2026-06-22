@@ -31,6 +31,7 @@
       <nav class="navbar">
         <div class="container">
           <a href="${langPrefix}/" class="nav-logo">
+            <img src="../images/logo.png" alt="${t.siteName}" height="36" onerror="this.style.display='none'">
             <span>${t.siteName}</span>
           </a>
           <ul class="nav-links" id="navLinks">
