@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 - 星索导航科技</title>
+  <meta name="description" content="联系深圳市星索导航科技有限公司 - 地址、电话、邮箱、在线咨询表单">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container text-center">
+      <span class="section-label">联系我们</span>
+      <h1 class="section-title">期待与您合作</h1>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">
+        如有产品咨询、技术需求或合作意向，欢迎随时与我们联系
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Contact Info -->
+        <div class="reveal">
+          <h3 style="margin-bottom:var(--space-xl);">联系方式</h3>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div class="contact-info-text">
+              <h4>公司地址</h4>
+              <p>广东省深圳市南山区科技园南区高新南一道</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div class="contact-info-text">
+              <h4>联系电话</h4>
+              <p>+86 755-XXXX-XXXX</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📧</div>
+            <div class="contact-info-text">
+              <h4>电子邮箱</h4>
+              <p>info@starseek-tech.com</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🤝</div>
+            <div class="contact-info-text">
+              <h4>商务合作</h4>
+              <p>sales@starseek-tech.com</p>
+            </div>
+          </div>
+
+          <!-- Map Placeholder -->
+          <div class="map-placeholder reveal">
+            <div class="placeholder-img">
+              <span class="icon">🗺️</span>
+              <span class="text">地图显示区域（替换为实际地图）</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="reveal">
+          <h3 style="margin-bottom:var(--space-xl);">在线留言</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label class="form-label" for="name">姓名 *</label>
+              <input type="text" id="name" class="form-input" placeholder="请输入您的姓名" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="company">公司</label>
+              <input type="text" id="company" class="form-input" placeholder="请输入您的公司名称">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">邮箱 *</label>
+              <input type="email" id="email" class="form-input" placeholder="请输入您的电子邮箱" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">电话</label>
+              <input type="tel" id="phone" class="form-input" placeholder="请输入您的联系电话">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">咨询主题</label>
+              <select id="subject" class="form-input">
+                <option value="">请选择咨询主题</option>
+                <option value="product">产品咨询</option>
+                <option value="solution">方案咨询</option>
+                <option value="cooperation">商务合作</option>
+                <option value="other">其他</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">留言内容 *</label>
+              <textarea id="message" class="form-textarea" placeholder="请描述您的需求或问题，我们将尽快回复" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+              提交留言
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

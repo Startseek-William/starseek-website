@@ -1,0 +1,264 @@
+/* ============================================================
+   Starseek Navigation - Main JavaScript
+   星索导航科技 - 主逻辑脚本
+   ============================================================ */
+
+(function () {
+  'use strict';
+
+  // --- Detect current language from path ---
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const currentLang = pathParts[0] === 'zh' || pathParts[0] === 'en' ? pathParts[0] : 'zh';
+  const t = I18N[currentLang] || I18N['zh'];
+
+  // --- Determine relative path prefix ---
+  const langPrefix = '/' + currentLang;
+
+  // --- Detect active page ---
+  function getActivePage() {
+    const path = window.location.pathname;
+    if (path.includes('/products')) return 'products';
+    if (path.includes('/solutions')) return 'solutions';
+    if (path.includes('/about')) return 'about';
+    if (path.includes('/contact')) return 'contact';
+    return 'home';
+  }
+  const activePage = getActivePage();
+
+  // --- Inject Navigation Bar ---
+  function renderNavbar() {
+    const navHTML = `
+      <nav class="navbar">
+        <div class="container">
+          <a href="${langPrefix}/" class="nav-logo">
+            <span>${t.siteName}</span>
+          </a>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="${langPrefix}/" class="${activePage === 'home' ? 'active' : ''}">${t.navHome}</a></li>
+            <li><a href="${langPrefix}/products.html" class="${activePage === 'products' ? 'active' : ''}">${t.navProducts}</a></li>
+            <li><a href="${langPrefix}/solutions.html" class="${activePage === 'solutions' ? 'active' : ''}">${t.navSolutions}</a></li>
+            <li><a href="${langPrefix}/about.html" class="${activePage === 'about' ? 'active' : ''}">${t.navAbout}</a></li>
+            <li><a href="${langPrefix}/contact.html" class="${activePage === 'contact' ? 'active' : ''}">${t.navContact}</a></li>
+          </ul>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="lang-switch">
+              <button class="${currentLang === 'zh' ? 'active' : ''}" onclick="switchLang('zh')" aria-label="中文">中</button>
+              <button class="${currentLang === 'en' ? 'active' : ''}" onclick="switchLang('en')" aria-label="English">EN</button>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+      </nav>
+    `;
+    document.body.insertAdjacentHTML('afterbegin', navHTML);
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+      // Close on link click
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+      });
+    }
+  }
+
+  // --- Language Switch ---
+  window.switchLang = function (lang) {
+    const path = window.location.pathname;
+    // Replace language prefix in path
+    const parts = path.split('/').filter(Boolean);
+    if (parts[0] === 'zh' || parts[0] === 'en') {
+      parts[0] = lang;
+    } else {
+      parts.unshift(lang);
+    }
+    window.location.href = '/' + parts.join('/') + window.location.search;
+  };
+
+  // --- Inject Footer ---
+  function renderFooter() {
+    const footerHTML = `
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <a href="${langPrefix}/" class="nav-logo">
+                <span>${t.siteName}</span>
+              </a>
+              <p>${t.footerDesc}</p>
+            </div>
+            <div class="footer-col">
+              <h4>${t.footerProducts}</h4>
+              <ul>
+                <li><a href="${langPrefix}/products.html">${currentLang === 'zh' ? '抗干扰天线' : 'Anti-Jamming Antennas'}</a></li>
+                <li><a href="${langPrefix}/products.html">${currentLang === 'zh' ? '侦测反制设备' : 'Detection & Countermeasure'}</a></li>
+                <li><a href="${langPrefix}/products.html">${currentLang === 'zh' ? '低空防护系统' : 'Low-Altitude Protection'}</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>${t.footerSolutions}</h4>
+              <ul>
+                <li><a href="${langPrefix}/solutions.html">${currentLang === 'zh' ? '机场安全保障' : 'Airport Security'}</a></li>
+                <li><a href="${langPrefix}/solutions.html">${currentLang === 'zh' ? '基础设施防护' : 'Infrastructure Protection'}</a></li>
+                <li><a href="${langPrefix}/solutions.html">${currentLang === 'zh' ? '军事要地防护' : 'Military Site Protection'}</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>${t.footerAbout}</h4>
+              <ul>
+                <li><a href="${langPrefix}/about.html">${t.navAbout}</a></li>
+                <li><a href="${langPrefix}/contact.html">${t.navContact}</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>${t.footerRights}</p>
+          </div>
+        </div>
+      </footer>
+    `;
+    document.body.insertAdjacentHTML('beforeend', footerHTML);
+  }
+
+  // --- Scroll Reveal ---
+  function initScrollReveal() {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -60px 0px',
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  // --- Navbar scroll effect ---
+  function initNavScroll() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 100) {
+        navbar.style.background = 'rgba(10, 14, 23, 0.95)';
+        navbar.style.boxShadow = '0 1px 20px rgba(0,0,0,0.3)';
+      } else {
+        navbar.style.background = 'rgba(10, 14, 23, 0.85)';
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = currentScroll;
+    }, { passive: true });
+  }
+
+  // --- Product Category Tabs ---
+  function initCategoryTabs() {
+    const tabs = document.querySelectorAll('.category-tab');
+    const cards = document.querySelectorAll('[data-category]');
+
+    if (!tabs.length || !cards.length) return;
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = '';
+            setTimeout(() => card.classList.add('animate-in'), 10);
+          } else {
+            card.style.display = 'none';
+            card.classList.remove('animate-in');
+          }
+        });
+      });
+    });
+  }
+
+  // --- Contact Form ---
+  function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = currentLang === 'zh' ? '发送中...' : 'Sending...';
+      btn.disabled = true;
+
+      // Simulate submission
+      setTimeout(() => {
+        btn.textContent = t.formSuccess;
+        btn.classList.add('btn-accent');
+        form.reset();
+
+        // Show success and reset
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('btn-accent');
+          btn.disabled = false;
+        }, 3000);
+      }, 1000);
+    });
+  }
+
+  // --- Page-Specific Title Injection ---
+  function setPageMeta() {
+    const pageTitles = {
+      home: t.siteTagline + ' - ' + t.siteNameFull,
+      products: t.navProducts + ' - ' + t.siteNameFull,
+      solutions: t.navSolutions + ' - ' + t.siteNameFull,
+      about: t.navAbout + ' - ' + t.siteNameFull,
+      contact: t.navContact + ' - ' + t.siteNameFull,
+    };
+    if (pageTitles[activePage]) {
+      document.title = pageTitles[activePage];
+    }
+  }
+
+  // --- Counter Animation for Stats ---
+  function animateStats() {
+    const statValues = document.querySelectorAll('.stat-value');
+    if (!statValues.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statValues.forEach(el => observer.observe(el));
+  }
+
+  // --- Initialize ---
+  document.addEventListener('DOMContentLoaded', () => {
+    renderNavbar();
+    renderFooter();
+    setPageMeta();
+    initScrollReveal();
+    initNavScroll();
+    initCategoryTabs();
+    initContactForm();
+    animateStats();
+  });
+
+})();
