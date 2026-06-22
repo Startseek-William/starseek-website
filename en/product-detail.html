@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail - Starseek Navigation Technology</title>
+  <meta name="description" content="Starseek Navigation Technology - Anti-Jamming Antenna Product Detail">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .detail-hero { padding-top: calc(var(--nav-height) + var(--space-2xl)); padding-bottom: var(--space-xl); background: var(--color-bg-deep); }
+    .detail-gallery { display: flex; gap: var(--space-md); margin-bottom: var(--space-xl); }
+    .detail-gallery img { width: 100%; max-height: 480px; object-fit: contain; background: var(--color-bg-elevated); border-radius: var(--radius-lg); border: 1px solid var(--color-border); }
+    .detail-gallery-thumbs { display: flex; gap: var(--space-sm); margin-top: var(--space-md); }
+    .detail-gallery-thumbs img { width: 80px; height: 80px; object-fit: cover; border-radius: var(--radius-md); border: 2px solid var(--color-border); cursor: pointer; transition: border-color var(--transition-fast); }
+    .detail-gallery-thumbs img:hover, .detail-gallery-thumbs img.active { border-color: var(--color-primary); }
+    .spec-table { width: 100%; border-collapse: collapse; margin: var(--space-xl) 0; }
+    .spec-table tr { border-bottom: 1px solid var(--color-border); }
+    .spec-table td { padding: var(--space-md) var(--space-lg); }
+    .spec-table td:first-child { color: var(--color-text-muted); font-weight: 500; width: 40%; white-space: nowrap; }
+    .spec-table td:last-child { color: var(--color-text-primary); font-weight: 600; }
+    .feature-list-detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-md); margin: var(--space-xl) 0; }
+    .feature-item-detail { display: flex; align-items: flex-start; gap: var(--space-md); padding: var(--space-lg); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+    .feature-item-detail .fi-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .feature-item-detail .fi-text { font-size: 0.9375rem; color: var(--color-text-primary); line-height: 1.6; }
+    .breadcrumb { display: flex; gap: var(--space-sm); align-items: center; font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--space-lg); }
+    .breadcrumb a { color: var(--color-text-secondary); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--color-primary-light); }
+    .section-divider { border: 0; border-top: 1px solid var(--color-border); margin: var(--space-2xl) 0; }
+    @media (max-width: 768px) {
+      .spec-table td:first-child { width: 50%; }
+      .detail-gallery-thumbs { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="detail-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="./">Home</a> <span>/</span>
+        <a href="products.html">Products</a> <span>/</span>
+        <span id="bcCat">Anti-Jamming Antenna</span> <span>/</span>
+        <span id="bcName" style="color:var(--color-text-primary);">Product Detail</span>
+      </div>
+
+      <div class="reveal">
+        <span class="section-label" id="detailSeries">Series</span>
+        <h1 class="section-title" id="detailName">Product Name</h1>
+        <p class="section-desc" id="detailSubtitle" style="font-size:1.125rem;">Product description</p>
+      </div>
+
+      <!-- Main Gallery -->
+      <div class="reveal" id="galleryMain">
+        <div class="detail-gallery">
+          <img id="mainImage" src="" alt="Product Image" style="width:100%;">
+        </div>
+        <div class="detail-gallery-thumbs" id="galleryThumbs"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="reveal" style="max-width:860px;">
+        <h3 style="margin-bottom:var(--space-md);">Overview</h3>
+        <p style="font-size:1.0625rem;line-height:1.85;color:var(--color-text-secondary);" id="detailOverview"></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- Features -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <h3 style="margin-bottom:var(--space-xl);">Key Features</h3>
+      <div class="feature-list-detail reveal" id="detailFeatures"></div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- Specs Table -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <h3 style="margin-bottom:var(--space-xl);">Technical Specifications</h3>
+      <div class="reveal" style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;">
+        <table class="spec-table" id="detailSpecs"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container reveal">
+      <div class="cta-section">
+        <h2>Interested in This Product?</h2>
+        <p>Contact us for detailed documentation, pricing and samples</p>
+        <a href="contact.html" class="btn btn-accent btn-lg">Inquire Now →</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/product-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var model = params.get('model');
+      if (!model || !PRODUCT_DETAIL[model]) {
+        document.querySelector('.detail-hero .container').innerHTML = '<div class="text-center" style="padding:4rem 0;"><h2>Product Not Found</h2><p>Please browse from the Products page</p><a href="products.html" class="btn btn-primary">Back to Products</a></div>';
+        return;
+      }
+
+      var d = PRODUCT_DETAIL[model].en;
+
+      document.title = d.name + ' - Starseek Navigation';
+
+      document.getElementById('detailSeries').textContent = d.series;
+      document.getElementById('detailName').textContent = d.name;
+      document.getElementById('detailSubtitle').textContent = d.subtitle;
+      document.getElementById('bcName').textContent = d.name;
+      document.getElementById('bcCat').textContent = 'Anti-Jamming Antenna';
+
+      document.getElementById('detailOverview').textContent = d.overview;
+
+      var mainImg = document.getElementById('mainImage');
+      var thumbsDiv = document.getElementById('galleryThumbs');
+      var basePath = '../images/products/';
+
+      if (d.images && d.images.length > 0) {
+        mainImg.src = basePath + d.images[0];
+        mainImg.alt = d.name;
+        d.images.forEach(function(img, i) {
+          var thumb = document.createElement('img');
+          thumb.src = basePath + img;
+          thumb.alt = d.name + ' - ' + (i+1);
+          thumb.className = i === 0 ? 'active' : '';
+          thumb.onclick = function() {
+            mainImg.src = basePath + img;
+            thumbsDiv.querySelectorAll('img').forEach(function(t) { t.className = ''; });
+            thumb.className = 'active';
+          };
+          thumbsDiv.appendChild(thumb);
+        });
+      }
+
+      var featDiv = document.getElementById('detailFeatures');
+      var icons = ['🔬','⚙️','🛡️','📡','🚀','💡','🎯','✅'];
+      d.features.forEach(function(f, i) {
+        var item = document.createElement('div');
+        item.className = 'feature-item-detail';
+        item.innerHTML = '<span class="fi-icon">' + (icons[i] || '✅') + '</span><span class="fi-text">' + f + '</span>';
+        featDiv.appendChild(item);
+      });
+
+      var specTable = document.getElementById('detailSpecs');
+      d.specs.forEach(function(row) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + row[0] + '</td><td>' + row[1] + '</td>';
+        specTable.appendChild(tr);
+      });
+    });
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
