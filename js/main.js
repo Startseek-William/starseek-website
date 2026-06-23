@@ -53,7 +53,7 @@
         </div>
       </nav>
     `;
-    document.body.insertAdjacentHTML('afterbegin', navHTML);
+    document.body.insertAdjacentHTML('afterbegin', navHTML + '<div id="bannerSlider" class="banner-slider"></div>');
 
     // Mobile nav toggle
     const navToggle = document.getElementById('navToggle');
@@ -252,6 +252,64 @@
     }
   }
 
+  // --- Banner Slider ---
+  function initBannerSlider() {
+    const bannerContainer = document.getElementById('bannerSlider');
+    if (!bannerContainer) return;
+
+    const slidesData = [
+      { img: '../images/products/XS-AJ-04-L1-S50_best4.png', title: currentLang === 'zh' ? '无人机抗干扰天线专家' : 'Drone Anti-Jamming Antenna Expert', desc: currentLang === 'zh' ? '从微型4阵元到旗舰双16阵元，全系列产品覆盖各类无人机平台' : 'From miniature 4-element to flagship dual 16-element, covering all UAV platforms', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '了解产品 →' : 'View Products →' },
+      { img: '../images/products/XS-AJ-08-L1-S130_best2.png', title: currentLang === 'zh' ? '高性能多阵元抗干扰阵列' : 'High-Performance Multi-Element Arrays', desc: currentLang === 'zh' ? '8阵元至16阵元，支持同时抵抗多达15个干扰源，适应极端电磁环境' : '8 to 16 elements, resisting up to 15 simultaneous interference sources', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '探索产品 →' : 'Explore Products →' },
+      { img: '../images/products/XS-AJ-D16-L1L2-S300_best2.png', title: currentLang === 'zh' ? '双频多阵元旗舰解决方案' : 'Dual-Band Multi-Element Flagship Solutions', desc: currentLang === 'zh' ? 'L1+L2双频·双16阵元阵列，为最严苛的军用和国防场景保驾护航' : 'L1+L2 dual-band · dual 16-element arrays for demanding military & defense applications', link: langPrefix + '/contact.html', linkText: currentLang === 'zh' ? '联系我们 →' : 'Contact Us →' },
+    ];
+
+    let currentSlide = 0;
+    let interval;
+
+    function buildHTML() {
+      let slidesHTML = '';
+      let dotsHTML = '';
+      slidesData.forEach((s, i) => {
+        slidesHTML += `<div class="banner-slide${i === 0 ? ' active' : ''}">
+          <img src="${s.img}" alt="${s.title}" onerror="this.parentElement.style.display='none'">
+          <div class="banner-slide-content">
+            <h2>${s.title}</h2>
+            <p>${s.desc}</p>
+            <a href="${s.link}" class="btn btn-primary btn-lg">${s.linkText}</a>
+          </div>
+        </div>`;
+        dotsHTML += `<button class="banner-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="${currentLang === 'zh' ? '第'+(i+1)+'张' : 'Slide '+(i+1)}"></button>`;
+      });
+      return `<div class="banner-slider-inner">${slidesHTML}</div>
+        <button class="banner-arrow prev" aria-label="${currentLang === 'zh' ? '上一张' : 'Previous'}">◀</button>
+        <button class="banner-arrow next" aria-label="${currentLang === 'zh' ? '下一张' : 'Next'}">▶</button>
+        <div class="banner-nav">${dotsHTML}</div>`;
+    }
+
+    bannerContainer.innerHTML = buildHTML();
+
+    const slides = bannerContainer.querySelectorAll('.banner-slide');
+    const dots = bannerContainer.querySelectorAll('.banner-dot');
+
+    function goTo(n) {
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function next() { goTo(currentSlide + 1); }
+    function prev() { goTo(currentSlide - 1); }
+
+    bannerContainer.querySelector('.banner-arrow.next').addEventListener('click', () => { next(); resetTimer(); });
+    bannerContainer.querySelector('.banner-arrow.prev').addEventListener('click', () => { prev(); resetTimer(); });
+    dots.forEach(d => d.addEventListener('click', () => { goTo(parseInt(d.dataset.index)); resetTimer(); }));
+
+    function resetTimer() { clearInterval(interval); interval = setInterval(next, 5000); }
+    interval = setInterval(next, 5000);
+  }
+
   // --- Counter Animation for Stats ---
   function animateStats() {
     const statValues = document.querySelectorAll('.stat-value');
@@ -278,6 +336,7 @@
     initNavScroll();
     initCategoryTabs();
     initContactForm();
+    initBannerSlider();
     animateStats();
   });
 

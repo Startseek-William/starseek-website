@@ -3,6 +3,69 @@
    星索导航科技 - 全局设计系统
    ============================================================ */
 
+/* --- Banner Slider --- */
+.banner-slider {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  background: var(--color-bg-deep);
+}
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner-slide.active { opacity: 1; z-index: 1; }
+.banner-slide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35);
+}
+.banner-slide-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 var(--space-xl);
+}
+.banner-slide-content h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: var(--space-md);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+.banner-slide-content p {
+  font-size: clamp(0.9375rem, 2vw, 1.125rem);
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+.banner-nav { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 10px; }
+.banner-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.4); border: none; cursor: pointer; transition: background var(--transition-fast); padding: 0; }
+.banner-dot.active { background: var(--color-primary); }
+.banner-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.4); color: #fff; border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; transition: background var(--transition-fast); }
+.banner-arrow:hover { background: rgba(0,0,0,0.7); }
+.banner-arrow.prev { left: 16px; }
+.banner-arrow.next { right: 16px; }
+@media (max-width: 768px) {
+  .banner-slider { height: 320px; }
+  .banner-arrow { width: 36px; height: 36px; font-size: 1rem; }
+  .banner-arrow.prev { left: 8px; }
+  .banner-arrow.next { right: 8px; }
+}
+
+/* --- Page with Banner --- */
+.page-with-banner .page-header { padding-top: var(--space-2xl); }
+
 /* --- CSS Variables / Design Tokens --- */
 :root {
   /* Primary palette */
