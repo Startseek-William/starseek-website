@@ -19,7 +19,7 @@ const I18N = {
     navContact: '联系我们',
 
     // --- Footer ---
-    footerDesc: '深圳市星索导航科技有限公司，专注于无人机抗干扰天线、无人机侦测反制及低空防护产品的研发与制造，致力于为全球客户提供可靠的低空安全解决方案。',
+    footerDesc: '深圳市星索导航科技有限公司，专注于GNSS抗干扰单元、无人机侦测反制及低空防护产品的研发与制造，致力于为全球客户提供可靠的低空安全解决方案。',
     footerProducts: '产品导航',
     footerSolutions: '解决方案',
     footerAbout: '关于我们',
@@ -28,15 +28,15 @@ const I18N = {
     // --- Home Hero ---
     heroBadge: '专业无人机低空防护',
     heroTitle: '精准抗干扰<br>守护低空安全',
-    heroSubtitle: '专注无人机抗干扰天线与侦测反制系统研发，为关键基础设施和敏感区域提供全天候低空防护解决方案',
+    heroSubtitle: '专注GNSS抗干扰单元与无人机侦测反制系统研发，为关键基础设施和敏感区域提供全天候低空防护解决方案',
     heroBtnProducts: '查看产品',
     heroBtnContact: '联系我们',
 
     // --- Home: Core Business ---
     coreLabel: '核心业务',
     coreTitle: '三大核心业务',
-    coreDesc: '覆盖无人机抗干扰、侦测反制、低空防护全链路，提供一站式解决方案',
-    core1Title: '无人机抗干扰天线',
+    coreDesc: '覆盖GNSS抗干扰单元、侦测反制、低空防护全链路，提供一站式解决方案',
+    core1Title: 'GNSS抗干扰单元',
     core1Desc: '自主研发多频段 GNSS 抗干扰天线，采用自适应调零技术，有效对抗多种干扰源，保障无人机导航定位安全。',
     core2Title: '无人机侦测反制',
     core2Desc: '集成雷达探测、无线电侦测、光电跟踪等多维侦测手段，配合智能反制设备，实现快速发现与精准处置。',
@@ -275,7 +275,7 @@ const I18N = {
     navContact: 'Contact',
 
     // --- Footer ---
-    footerDesc: 'Shenzhen Starseek Navigation Technology Co., Ltd. specializes in R&D and manufacturing of drone anti-jamming antennas, drone detection & countermeasure systems, and low-altitude protection solutions, committed to providing reliable low-altitude security for global clients.',
+    footerDesc: 'Shenzhen Starseek Navigation Technology Co., Ltd. specializes in R&D and manufacturing of GNSS anti-jamming units, drone detection & countermeasure systems, and low-altitude protection solutions, committed to providing reliable low-altitude security for global clients.',
     footerProducts: 'Products',
     footerSolutions: 'Solutions',
     footerAbout: 'About Us',
@@ -284,15 +284,15 @@ const I18N = {
     // --- Home Hero ---
     heroBadge: 'Professional Drone Low-Altitude Protection',
     heroTitle: 'Precision Anti-Jamming<br>Low-Altitude Security',
-    heroSubtitle: 'Specializing in drone anti-jamming antennas and detection & countermeasure systems, providing 24/7 low-altitude protection for critical infrastructure and sensitive areas',
+    heroSubtitle: 'Specializing in GNSS anti-jamming units and drone detection & countermeasure systems, providing 24/7 low-altitude protection for critical infrastructure and sensitive areas',
     heroBtnProducts: 'View Products',
     heroBtnContact: 'Contact Us',
 
     // --- Home: Core Business ---
     coreLabel: 'CORE BUSINESS',
     coreTitle: 'Three Core Businesses',
-    coreDesc: 'Full-chain coverage of drone anti-jamming, detection & countermeasure, and low-altitude protection — one-stop solutions',
-    core1Title: 'Drone Anti-Jamming Antennas',
+    coreDesc: 'Full-chain coverage of GNSS anti-jamming, detection & countermeasure, and low-altitude protection — one-stop solutions',
+    core1Title: 'GNSS Anti-Jamming Units',
     core1Desc: 'Independently developed multi-band GNSS anti-jamming antennas with adaptive nulling technology, effectively countering multiple jamming sources to ensure drone navigation and positioning safety.',
     core2Title: 'Drone Detection & Countermeasure',
     core2Desc: 'Integrating radar detection, radio surveillance, and electro-optical tracking with intelligent countermeasure devices for rapid discovery and precise neutralization.',
@@ -331,13 +331,13 @@ const I18N = {
 
     // --- Home: CTA ---
     ctaTitle: 'Safeguard Your Low-Altitude Security',
-    ctaDesc: 'From anti-jamming antennas to complete low-altitude protection solutions — tailored to your needs',
+    ctaDesc: 'From GNSS anti-jamming units to complete low-altitude protection solutions — tailored to your needs',
     ctaBtn: 'Contact Us Now',
 
     // --- Products Page ---
     productsLabel: 'PRODUCTS',
     productsTitle: 'Professional Products · Superior Performance',
-    productsDesc: 'Covering three product lines: anti-jamming antennas, detection & countermeasure equipment, and low-altitude protection systems',
+    productsDesc: 'Covering three product lines: GNSS anti-jamming units, detection & countermeasure equipment, and low-altitude protection systems',
 
     catAll: 'All Products',
     catAntenna: 'GNSS Anti-Jamming Units',
