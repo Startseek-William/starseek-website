@@ -230,9 +230,9 @@ const I18N = {
     contactPhoneTitle: '联系人',
     contactPhone: '18123769551',
     contactEmailTitle: '电子邮箱',
-    contactEmail: 'sales@xsgnss.com',
+    contactEmail: 'william.liu2025@outlook.com',
     contactBizTitle: '联系人',
-    contactBizEmail: 'sales@xsgnss.com',
+    contactBizEmail: 'william.liu2025@outlook.com',
 
     formName: '姓名',
     formNamePlaceholder: '请输入您的姓名',
@@ -486,9 +486,9 @@ const I18N = {
     contactPhoneTitle: 'Contact',
     contactPhone: '+86 18123769551',
     contactEmailTitle: 'Email',
-    contactEmail: 'sales@xsgnss.com',
+    contactEmail: 'william.liu2025@outlook.com',
     contactBizTitle: 'Contact',
-    contactBizEmail: 'sales@xsgnss.com',
+    contactBizEmail: 'william.liu2025@outlook.com',
 
     formName: 'Name',
     formNamePlaceholder: 'Enter your name',
