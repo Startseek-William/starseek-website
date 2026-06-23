@@ -167,53 +167,46 @@
 
   // --- Product Category Tabs ---
   function initCategoryTabs() {
-    const tabs = document.querySelectorAll('.category-tab');
-    const cards = document.querySelectorAll('[data-category]');
+    var tabs = document.querySelectorAll('.category-tab');
+    var cards = document.querySelectorAll('[data-category]');
 
     if (!tabs.length || !cards.length) return;
 
     function applyFilter(filter) {
-      tabs.forEach(t => t.classList.remove('active'));
-      const activeTab = document.querySelector(`.category-tab[data-filter="${filter}"]`);
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      var activeTab = document.querySelector('.category-tab[data-filter="' + filter + '"]');
       if (activeTab) activeTab.classList.add('active');
 
-      cards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.style.display = '';
-          card.parentElement.style.display = ''; // for <a> wrapper
-          setTimeout(() => card.classList.add('animate-in'), 10);
+      cards.forEach(function(card) {
+        var link = card.parentElement;
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.removeAttribute('hidden');
+          card.style.cssText = '';
+          if (link && link.classList.contains('product-card-link')) {
+            link.removeAttribute('hidden');
+            link.style.cssText = '';
+          }
         } else {
-          card.style.display = 'none';
-          card.parentElement.style.display = 'none'; // for <a> wrapper
-          card.classList.remove('animate-in');
+          card.setAttribute('hidden', '');
+          card.style.cssText = 'display:none !important';
+          if (link && link.classList.contains('product-card-link')) {
+            link.setAttribute('hidden', '');
+            link.style.cssText = 'display:none !important';
+          }
         }
       });
-
-      // Update URL without reload
-      try {
-        if (history.replaceState) {
-          const url = new URL(window.location.href);
-          if (filter === 'all') {
-            url.searchParams.delete('category');
-          } else {
-            url.searchParams.set('category', filter);
-          }
-          history.replaceState(null, '', url.toString());
-        }
-      } catch(e) { /* ignore URL update errors */ }
     }
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', (e) => {
-        e.preventDefault();
-        try { applyFilter(tab.dataset.filter); } catch(err) { console.log('Filter error:', err); }
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        applyFilter(tab.getAttribute('data-filter'));
       });
     });
 
     // Check URL parameter on load
-    const params = new URLSearchParams(window.location.search);
-    const catParam = params.get('category');
-    if (catParam && document.querySelector(`.category-tab[data-filter="${catParam}"]`)) {
+    var params = new URLSearchParams(window.location.search);
+    var catParam = params.get('category');
+    if (catParam && document.querySelector('.category-tab[data-filter="' + catParam + '"]')) {
       applyFilter(catParam);
     }
   }
