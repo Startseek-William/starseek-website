@@ -28,10 +28,10 @@
     <div class="container">
       <!-- Category Tabs -->
       <div class="category-tabs reveal">
-        <button class="category-tab active" data-filter="all">All Products</button>
-        <button class="category-tab" data-filter="antenna">GNSS Anti-Jamming Units</button>
-        <button class="category-tab" data-filter="detection">Detection & Countermeasure</button>
-        <button class="category-tab" data-filter="protection">Low-Altitude Protection</button>
+        <button class="category-tab active" onclick="filterProducts('all',this)">All Products</button>
+        <button class="category-tab" onclick="filterProducts('antenna',this)">GNSS Anti-Jamming Units</button>
+        <button class="category-tab" onclick="filterProducts('detection',this)">Detection & Countermeasure</button>
+        <button class="category-tab" onclick="filterProducts('protection',this)">Low-Altitude Protection</button>
       </div>
 
       <!-- Product Grid -->

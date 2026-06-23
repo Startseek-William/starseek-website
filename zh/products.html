@@ -28,10 +28,10 @@
     <div class="container">
       <!-- Category Tabs -->
       <div class="category-tabs reveal">
-        <button class="category-tab active" data-filter="all">全部产品</button>
-        <button class="category-tab" data-filter="antenna">GNSS抗干扰单元</button>
-        <button class="category-tab" data-filter="detection">侦测反制</button>
-        <button class="category-tab" data-filter="protection">低空防护</button>
+        <button class="category-tab active" onclick="filterProducts('all',this)">全部产品</button>
+        <button class="category-tab" onclick="filterProducts('antenna',this)">GNSS抗干扰单元</button>
+        <button class="category-tab" onclick="filterProducts('detection',this)">侦测反制</button>
+        <button class="category-tab" onclick="filterProducts('protection',this)">低空防护</button>
       </div>
 
       <!-- Product Grid -->

@@ -165,6 +165,24 @@
     }, { passive: true });
   }
 
+  // --- Product Filter (global onclick handler) ---
+  window.filterProducts = function(filter, btn) {
+    var tabs = document.querySelectorAll('.category-tab');
+    var cards = document.querySelectorAll('[data-category]');
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    cards.forEach(function(card) {
+      var link = card.parentElement;
+      if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        card.style.display = '';
+        if (link && link.classList.contains('product-card-link')) link.style.display = '';
+      } else {
+        card.style.display = 'none';
+        if (link && link.classList.contains('product-card-link')) link.style.display = 'none';
+      }
+    });
+  };
+
   // --- Product Category Tabs ---
   function initCategoryTabs() {
     var tabs = document.querySelectorAll('.category-tab');
