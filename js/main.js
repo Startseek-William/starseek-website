@@ -220,26 +220,21 @@
     const form = document.getElementById('contactForm');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    // Check for success redirect
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('sent') === '1') {
       const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
+      if (btn) {
+        btn.textContent = currentLang === 'zh' ? '✓ 已发送' : '✓ Sent';
+        btn.classList.add('btn-accent');
+        btn.disabled = true;
+      }
+    }
+
+    form.addEventListener('submit', () => {
+      const btn = form.querySelector('button[type="submit"]');
       btn.textContent = currentLang === 'zh' ? '发送中...' : 'Sending...';
       btn.disabled = true;
-
-      // Simulate submission
-      setTimeout(() => {
-        btn.textContent = t.formSuccess;
-        btn.classList.add('btn-accent');
-        form.reset();
-
-        // Show success and reset
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.classList.remove('btn-accent');
-          btn.disabled = false;
-        }, 3000);
-      }, 1000);
     });
   }
 

@@ -76,7 +76,11 @@
         <!-- Contact Form -->
         <div class="reveal">
           <h3 style="margin-bottom:var(--space-xl);">Online Inquiry</h3>
-          <form id="contactForm">
+          <form id="contactForm" action="https://formsubmit.co/sales@xsgnss.com" method="POST">
+            <input type="hidden" name="_subject" value="Starseek Website Inquiry">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://sxgnss.com/en/contact.html?sent=1">
             <div class="form-group">
               <label class="form-label" for="name">Name *</label>
               <input type="text" id="name" class="form-input" placeholder="Enter your name" required>

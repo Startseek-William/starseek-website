@@ -68,7 +68,11 @@
         <!-- Contact Form -->
         <div class="reveal">
           <h3 style="margin-bottom:var(--space-xl);">在线留言</h3>
-          <form id="contactForm">
+          <form id="contactForm" action="https://formsubmit.co/sales@xsgnss.com" method="POST">
+            <input type="hidden" name="_subject" value="星索官网留言 - 来自网站">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://sxgnss.com/zh/contact.html?sent=1">
             <div class="form-group">
               <label class="form-label" for="name">姓名 *</label>
               <input type="text" id="name" class="form-input" placeholder="请输入您的姓名" required>
