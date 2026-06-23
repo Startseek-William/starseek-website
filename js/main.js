@@ -165,67 +165,30 @@
     }, { passive: true });
   }
 
-  // --- Product Filter (global onclick handler) ---
-  window.filterProducts = function(filter, btn) {
-    var tabs = document.querySelectorAll('.category-tab');
+  // --- Product Filter ---
+  window.filterProducts = function(cat, btn) {
     var cards = document.querySelectorAll('[data-category]');
+    var tabs = document.querySelectorAll('.category-tab');
+    // Update active tab
     tabs.forEach(function(t) { t.classList.remove('active'); });
-    if (btn) btn.classList.add('active');
-    cards.forEach(function(card) {
-      var link = card.parentElement;
-      if (filter === 'all' || card.getAttribute('data-category') === filter) {
-        card.style.display = '';
-        if (link && link.classList.contains('product-card-link')) link.style.display = '';
+    if (btn) { btn.classList.add('active'); }
+    // Show/hide
+    cards.forEach(function(c) {
+      if (cat === 'all' || c.getAttribute('data-category') === cat) {
+        c.style.display = '';
       } else {
-        card.style.display = 'none';
-        if (link && link.classList.contains('product-card-link')) link.style.display = 'none';
+        c.style.display = 'none';
       }
     });
   };
 
-  // --- Product Category Tabs ---
+  // --- Product Category Tabs (init) ---
   function initCategoryTabs() {
-    var tabs = document.querySelectorAll('.category-tab');
-    var cards = document.querySelectorAll('[data-category]');
-
-    if (!tabs.length || !cards.length) return;
-
-    function applyFilter(filter) {
-      tabs.forEach(function(t) { t.classList.remove('active'); });
-      var activeTab = document.querySelector('.category-tab[data-filter="' + filter + '"]');
-      if (activeTab) activeTab.classList.add('active');
-
-      cards.forEach(function(card) {
-        var link = card.parentElement;
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.removeAttribute('hidden');
-          card.style.cssText = '';
-          if (link && link.classList.contains('product-card-link')) {
-            link.removeAttribute('hidden');
-            link.style.cssText = '';
-          }
-        } else {
-          card.setAttribute('hidden', '');
-          card.style.cssText = 'display:none !important';
-          if (link && link.classList.contains('product-card-link')) {
-            link.setAttribute('hidden', '');
-            link.style.cssText = 'display:none !important';
-          }
-        }
-      });
-    }
-
-    tabs.forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        applyFilter(tab.getAttribute('data-filter'));
-      });
-    });
-
     // Check URL parameter on load
     var params = new URLSearchParams(window.location.search);
     var catParam = params.get('category');
-    if (catParam && document.querySelector('.category-tab[data-filter="' + catParam + '"]')) {
-      applyFilter(catParam);
+    if (catParam) {
+      window.filterProducts(catParam);
     }
   }
 
