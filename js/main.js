@@ -257,10 +257,11 @@
     const bannerContainer = document.getElementById('bannerSlider');
     if (!bannerContainer) return;
 
+    const imgBase = langPrefix.replace(/\/$/, '') + '/../images/products/';
     const slidesData = [
-      { img: '../images/products/XS-AJ-04-L1-S50_best4.png', title: currentLang === 'zh' ? '无人机抗干扰天线专家' : 'Drone Anti-Jamming Antenna Expert', desc: currentLang === 'zh' ? '从微型4阵元到旗舰双16阵元，全系列产品覆盖各类无人机平台' : 'From miniature 4-element to flagship dual 16-element, covering all UAV platforms', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '了解产品 →' : 'View Products →' },
-      { img: '../images/products/XS-AJ-08-L1-S130_best2.png', title: currentLang === 'zh' ? '高性能多阵元抗干扰阵列' : 'High-Performance Multi-Element Arrays', desc: currentLang === 'zh' ? '8阵元至16阵元，支持同时抵抗多达15个干扰源，适应极端电磁环境' : '8 to 16 elements, resisting up to 15 simultaneous interference sources', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '探索产品 →' : 'Explore Products →' },
-      { img: '../images/products/XS-AJ-D16-L1L2-S300_best2.png', title: currentLang === 'zh' ? '双频多阵元旗舰解决方案' : 'Dual-Band Multi-Element Flagship Solutions', desc: currentLang === 'zh' ? 'L1+L2双频·双16阵元阵列，为最严苛的军用和国防场景保驾护航' : 'L1+L2 dual-band · dual 16-element arrays for demanding military & defense applications', link: langPrefix + '/contact.html', linkText: currentLang === 'zh' ? '联系我们 →' : 'Contact Us →' },
+      { img: imgBase + 'XS-AJ-04-L1-S50_best1.jpg', title: currentLang === 'zh' ? '无人机抗干扰天线专家' : 'Drone Anti-Jamming Antenna Expert', desc: currentLang === 'zh' ? '从微型4阵元到旗舰双16阵元，全系列产品覆盖各类无人机平台' : 'From miniature 4-element to flagship dual 16-element, covering all UAV platforms', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '了解产品 →' : 'View Products →' },
+      { img: imgBase + 'XS-AJ-04-L1-S100_best1.jpg', title: currentLang === 'zh' ? '北斗GPS导航抗干扰核心技术' : 'BeiDou GPS Navigation Anti-Jamming Core Technology', desc: currentLang === 'zh' ? '覆盖BDS B1/GPS L1/Galileo E1/GLONASS G1，全星座兼容' : 'Covering BDS B1/GPS L1/Galileo E1/GLONASS G1, full constellation support', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '探索产品 →' : 'Explore Products →' },
+      { img: imgBase + 'XS-AJ-16-L1-S200_best3.png', title: currentLang === 'zh' ? '极端电磁环境下的可靠导航保障' : 'Reliable Navigation in Extreme EM Environments', desc: currentLang === 'zh' ? '8~16阵元多阵列系统，可同时抵抗多达15个干扰源，军工级可靠性' : '8-16 element arrays, resisting up to 15 simultaneous sources, military-grade reliability', link: langPrefix + '/contact.html', linkText: currentLang === 'zh' ? '联系我们 →' : 'Contact Us →' },
     ];
 
     let currentSlide = 0;
@@ -271,7 +272,7 @@
       let dotsHTML = '';
       slidesData.forEach((s, i) => {
         slidesHTML += `<div class="banner-slide${i === 0 ? ' active' : ''}">
-          <img src="${s.img}" alt="${s.title}" onerror="this.parentElement.style.display='none'">
+          <img src="${s.img}" alt="${s.title}" onerror="this.style.opacity='0'">
           <div class="banner-slide-content">
             <h2>${s.title}</h2>
             <p>${s.desc}</p>

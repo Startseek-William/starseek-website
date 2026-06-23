@@ -29,6 +29,14 @@
   object-fit: cover;
   filter: brightness(0.35);
 }
+/* Fallback gradient if images don't load */
+.banner-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0A1628 0%, #0D2137 40%, #0A1628 100%);
+  z-index: 0;
+}
 .banner-slide-content {
   position: relative;
   z-index: 2;
