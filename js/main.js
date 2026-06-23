@@ -190,20 +190,23 @@
       });
 
       // Update URL without reload
-      if (history.replaceState) {
-        const url = new URL(window.location);
-        if (filter === 'all') {
-          url.searchParams.delete('category');
-        } else {
-          url.searchParams.set('category', filter);
+      try {
+        if (history.replaceState) {
+          const url = new URL(window.location.href);
+          if (filter === 'all') {
+            url.searchParams.delete('category');
+          } else {
+            url.searchParams.set('category', filter);
+          }
+          history.replaceState(null, '', url.toString());
         }
-        history.replaceState(null, '', url);
-      }
+      } catch(e) { /* ignore URL update errors */ }
     }
 
     tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        applyFilter(tab.dataset.filter);
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        try { applyFilter(tab.dataset.filter); } catch(err) { console.log('Filter error:', err); }
       });
     });
 
