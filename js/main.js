@@ -97,7 +97,7 @@
             <div class="footer-col">
               <h4>${t.footerProducts}</h4>
               <ul>
-                <li><a href="${langPrefix}/products.html">${currentLang === 'zh' ? '抗干扰天线' : 'Anti-Jamming Antennas'}</a></li>
+                <li><a href="${langPrefix}/products.html">${currentLang === 'zh' ? 'GNSS抗干扰单元' : 'GNSS Anti-Jamming Units'}</a></li>
                 <li><a href="${langPrefix}/products.html">${currentLang === 'zh' ? '侦测反制设备' : 'Detection & Countermeasure'}</a></li>
                 <li><a href="${langPrefix}/products.html">${currentLang === 'zh' ? '低空防护系统' : 'Low-Altitude Protection'}</a></li>
               </ul>
@@ -259,9 +259,9 @@
 
     const imgBase = langPrefix.replace(/\/$/, '') + '/../images/products/';
     const slidesData = [
-      { img: imgBase + 'XS-AJ-04-L1-S50_best1.jpg', title: currentLang === 'zh' ? '无人机抗干扰天线专家' : 'Drone Anti-Jamming Antenna Expert', desc: currentLang === 'zh' ? '从微型4阵元到旗舰双16阵元，全系列产品覆盖各类无人机平台' : 'From miniature 4-element to flagship dual 16-element, covering all UAV platforms', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '了解产品 →' : 'View Products →' },
-      { img: imgBase + 'XS-AJ-04-L1-S100_best1.jpg', title: currentLang === 'zh' ? '北斗GPS导航抗干扰核心技术' : 'BeiDou GPS Navigation Anti-Jamming Core Technology', desc: currentLang === 'zh' ? '覆盖BDS B1/GPS L1/Galileo E1/GLONASS G1，全星座兼容' : 'Covering BDS B1/GPS L1/Galileo E1/GLONASS G1, full constellation support', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '探索产品 →' : 'Explore Products →' },
-      { img: imgBase + 'XS-AJ-16-L1-S200_best3.png', title: currentLang === 'zh' ? '极端电磁环境下的可靠导航保障' : 'Reliable Navigation in Extreme EM Environments', desc: currentLang === 'zh' ? '8~16阵元多阵列系统，可同时抵抗多达15个干扰源，军工级可靠性' : '8-16 element arrays, resisting up to 15 simultaneous sources, military-grade reliability', link: langPrefix + '/contact.html', linkText: currentLang === 'zh' ? '联系我们 →' : 'Contact Us →' },
+      { img: imgBase + 'XS-AJ-08-L1-S130_best2.png', title: currentLang === 'zh' ? 'GNSS抗干扰单元' : 'GNSS Anti-Jamming Units', desc: currentLang === 'zh' ? '微型4阵元到旗舰双16阵元，覆盖全频段全星座，有效对抗宽带/窄带/扫频/脉冲干扰' : 'From miniature 4-element to flagship dual 16-element, covering all bands and constellations', link: langPrefix + '/products.html?category=antenna', linkText: currentLang === 'zh' ? '了解产品 →' : 'View Products →' },
+      { img: imgBase + 'XS-AJ-16-L1-S200_best4.png', title: currentLang === 'zh' ? '无人机侦测反制' : 'Drone Detection & Countermeasure', desc: currentLang === 'zh' ? '雷达+无线电+光电多模侦测，定向干扰与导航欺骗反制，全天候低空安防' : 'Radar + Radio + EO multi-mode detection, directional jamming and navigation spoofing countermeasure', link: langPrefix + '/products.html?category=detection', linkText: currentLang === 'zh' ? '了解方案 →' : 'View Solutions →' },
+      { img: imgBase + 'XS-AJ-D16-L1L2-S300_best2.png', title: currentLang === 'zh' ? '低空防护系统' : 'Low-Altitude Protection Systems', desc: currentLang === 'zh' ? '固定式+移动式一体化低空防护，多站点组网协同，7×24自动值守' : 'Fixed + mobile integrated low-altitude protection, multi-site networking, 24/7 autonomous operation', link: langPrefix + '/products.html?category=protection', linkText: currentLang === 'zh' ? '了解系统 →' : 'View Systems →' },
     ];
 
     let currentSlide = 0;

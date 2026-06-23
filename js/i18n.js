@@ -84,7 +84,7 @@ const I18N = {
     productsDesc: '涵盖无人机抗干扰天线、侦测反制设备、低空防护系统三大产品线',
 
     catAll: '全部产品',
-    catAntenna: '抗干扰天线',
+    catAntenna: 'GNSS抗干扰单元',
     catDetection: '侦测反制',
     catProtection: '低空防护',
 
@@ -340,7 +340,7 @@ const I18N = {
     productsDesc: 'Covering three product lines: anti-jamming antennas, detection & countermeasure equipment, and low-altitude protection systems',
 
     catAll: 'All Products',
-    catAntenna: 'Anti-Jamming Antennas',
+    catAntenna: 'GNSS Anti-Jamming Units',
     catDetection: 'Detection & Countermeasure',
     catProtection: 'Low-Altitude Protection',
 
