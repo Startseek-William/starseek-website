@@ -1006,7 +1006,17 @@ img {
   opacity: 0.5;
 }
 
-/* --- Map Placeholder --- */
+/* --- Map --- */
+.map-container iframe {
+  width: 100%;
+  min-height: 320px;
+  filter: brightness(0.9) contrast(1.1);
+}
+@media (max-width: 768px) {
+  .map-container iframe { min-height: 260px; }
+}
+
+/* --- Map Placeholder (legacy) --- */
 .map-placeholder {
   width: 100%;
   height: 300px;

@@ -36,7 +36,7 @@
             <div class="contact-info-icon">📍</div>
             <div class="contact-info-text">
               <h4>公司地址</h4>
-              <p>深圳市龙华区大浪街道陶元鹊山忠信路9号1栋7B</p>
+              <p>深圳市龙华区大浪街道陶元鹊山忠信路9号康瑞智慧谷1栋7B</p>
             </div>
           </div>
 
@@ -56,12 +56,18 @@
             </div>
           </div>
 
-          <!-- Map Placeholder -->
-          <div class="map-placeholder reveal">
-            <div class="placeholder-img">
-              <span class="icon">🗺️</span>
-              <span class="text">地图显示区域（替换为实际地图）</span>
+          <!-- Map -->
+          <div class="map-container reveal">
+            <iframe
+              width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=113.99%2C22.65%2C114.02%2C22.68&amp;layer=mapnik&amp;marker=22.665229%2C114.006837"
+              style="border:1px solid var(--color-border);border-radius:var(--radius-lg);">
+            </iframe>
+            <div style="display:flex;gap:var(--space-md);margin-top:var(--space-md);flex-wrap:wrap;">
+              <a href="https://uri.amap.com/marker?position=114.006837,22.665229&name=深圳市星索导航科技有限公司&callnative=1" target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;">🗺️ 高德地图查看</a>
+              <a href="https://api.map.baidu.com/marker?location=22.665229,114.006837&title=深圳市星索导航科技有限公司&content=深圳市龙华区大浪街道陶元鹊山忠信路9号康瑞智慧谷1栋7B&output=html" target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;">📍 百度地图查看</a>
             </div>
+            <p style="font-size:0.8rem;color:var(--color-text-muted);margin-top:var(--space-md);">深圳市龙华区大浪街道陶元鹊山忠信路9号康瑞智慧谷1栋7B</p>
           </div>
         </div>
 

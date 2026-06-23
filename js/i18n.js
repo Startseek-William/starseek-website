@@ -226,7 +226,7 @@ const I18N = {
     contactDesc: '如有产品咨询、技术需求或合作意向，欢迎随时与我们联系',
 
     contactAddrTitle: '公司地址',
-    contactAddr: '深圳市龙华区大浪街道陶元鹊山忠信路9号1栋7B',
+    contactAddr: '深圳市龙华区大浪街道陶元鹊山忠信路9号康瑞智慧谷1栋7B',
     contactPhoneTitle: '联系人',
     contactPhone: '18123769551',
     contactEmailTitle: '电子邮箱',
@@ -482,7 +482,7 @@ const I18N = {
     contactDesc: 'For product inquiries, technical requirements, or partnership opportunities, please feel free to contact us',
 
     contactAddrTitle: 'Address',
-    contactAddr: '7B, Building 1, No.9 Zhongxin Road, Taoyuan Queshan, Dalang Street, Longhua District, Shenzhen, Guangdong, China',
+    contactAddr: '7B, Building 1, Kangrui Smart Valley, No.9 Zhongxin Road, Taoyuan Queshan, Dalang Street, Longhua District, Shenzhen, Guangdong, China',
     contactPhoneTitle: 'Contact',
     contactPhone: '+86 18123769551',
     contactEmailTitle: 'Email',
