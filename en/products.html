@@ -24,12 +24,16 @@
     <div class="container">
       <div class="category-tabs reveal">
 <button class="category-tab active" onclick="filterProducts(&#39;all&#39;,this)">All Products</button>
-<button class="category-tab" onclick="filterProducts(&#39;antenna&#39;,this)">GNSS Anti-Jamming</button>
-<button class="category-tab" onclick="filterProducts(&#39;detection&#39;,this)">Detection Products</button>
-<button class="category-tab" onclick="filterProducts(&#39;countermeasure&#39;,this)">Countermeasure Products</button>
-<button class="category-tab" onclick="filterProducts(&#39;protection&#39;,this)">Low-Altitude Protection</button>
-      </div>
-      <div class="card-grid">
+<button class="category-tab " onclick="filterProducts(&#39;antenna&#39;,this)">GNSS Anti-Jamming</button>
+<button class="category-tab has-sub" onclick="filterProducts(&#39;detection&#39;,this)">Detection & Countermeasure</button>
+<button class="category-tab " onclick="filterProducts(&#39;protection&#39;,this)">Low-Altitude Protection</button>
+</div>
+<div class="category-subtabs reveal" id="detectionSubtabs" style="display:none;">
+<button class="category-tab sub" onclick="filterProducts(&#39;detection-detect&#39;,this)">Detection Products</button>
+<button class="category-tab sub" onclick="filterProducts(&#39;detection-jam&#39;,this)">Jamming Suppression</button>
+<button class="category-tab sub" onclick="filterProducts(&#39;detection-spoof&#39;,this)">Navigation Spoofing</button>
+</div>
+<div class="card-grid">
 <!-- XS-AJ-04-L1-S50 -->
 <div class="product-card" data-category="antenna" onclick="window.location='product-detail.html?model=XS-AJ-04-L1-S50'" style="cursor:pointer">
       <div class="product-image">

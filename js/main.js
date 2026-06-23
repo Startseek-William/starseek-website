@@ -168,17 +168,44 @@
   // --- Product Filter ---
   window.filterProducts = function(cat, btn) {
     var cards = document.querySelectorAll('[data-category]');
-    var tabs = document.querySelectorAll('.category-tab');
-    // Update active tab
-    tabs.forEach(function(t) { t.classList.remove('active'); });
-    if (btn) { btn.classList.add('active'); }
-    // Show/hide
+    var mainTabs = document.querySelectorAll('.category-tab:not(.sub)');
+    var subTabs = document.querySelectorAll('.category-tab.sub');
+    var subtabsDiv = document.getElementById('detectionSubtabs');
+
+    // Update main tab active state (only for main tabs)
+    if (!btn || !btn.classList.contains('sub')) {
+      mainTabs.forEach(function(t) { t.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+    }
+
+    // Show/hide sub-tabs
+    var isDetection = (cat === 'detection' || cat.indexOf('detection-') === 0);
+    if (subtabsDiv) subtabsDiv.style.display = isDetection ? 'flex' : 'none';
+
+    // Update sub-tab active state
+    if (cat.indexOf('detection-') === 0) {
+      subTabs.forEach(function(t) { t.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+    } else {
+      subTabs.forEach(function(t) { t.classList.remove('active'); });
+    }
+
+    // Filter cards
     cards.forEach(function(c) {
-      if (cat === 'all' || c.getAttribute('data-category') === cat) {
-        c.style.display = '';
+      var cardCat = c.getAttribute('data-category');
+      var show = false;
+      if (cat === 'all') {
+        show = true;
+      } else if (cat === 'detection') {
+        // Show all detection subcategories
+        show = (cardCat.indexOf('detection-') === 0);
+      } else if (cat.indexOf('detection-') === 0) {
+        // Show only matching subcategory
+        show = (cardCat === cat);
       } else {
-        c.style.display = 'none';
+        show = (cardCat === cat);
       }
+      c.style.display = show ? '' : 'none';
     });
   };
 
